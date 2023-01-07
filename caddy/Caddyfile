@@ -1,0 +1,15 @@
+{
+  http_port 1080
+}
+
+chat.utmc.port0.org {
+  reverse_proxy /_matrix/* localhost:8008
+  reverse_proxy /_synapse/client/* localhost:8008
+
+  # Element UI serverd by Nginx
+  reverse_proxy * localhost:80
+}
+
+http://localhost {
+  reverse_proxy /_synapse/admin/* localhost:8008
+}
